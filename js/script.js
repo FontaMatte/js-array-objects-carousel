@@ -59,15 +59,22 @@ nextImage.addEventListener('click',
         console.log('cliccato next');
 
         allSlides[currentSlide].classList.remove('current'); //rimuovo classe "current" alla vecchia slide
-        currentSlide += 1; //ad ogni click incemento l'indice di 1 per cambiare immagine
+
+        if ( currentSlide < (images.length - 1)) {
+
+            currentSlide += 1; //ad ogni click incemento l'indice di 1 per cambiare immagine
+
+            previousImage.classList.remove('hidden');    //rimuovo la classe hidden per rendere visibile la freecia previous  
+
+        } 
+
+        else {
+
+            currentSlide = 0; 
+ 
+        }
 
         allSlides[currentSlide].classList.add('current');  //aagiungo la classe "current" alla nuova slide
-
-        previousImage.classList.remove('hidden');    //rimuovo la classe hidden per rendere visibile la freecia previous
-
-        if (currentSlide == allSlides.length - 1) { 
-        nextImage.classList.add('hidden');  //nascondo la freccia next quando arrivo all'ultima immagine
-        }
     }
     
 );
@@ -77,16 +84,21 @@ previousImage.addEventListener('click',
     function() {
         console.log('cliccato previous');
 
-        allSlides[currentSlide].classList.remove('current');
-        currentSlide -= 1;
+        allSlides[currentSlide].classList.remove('current'); //rimuovo classe "current" alla vecchia slide
 
-        allSlides[currentSlide].classList.add('current');
+        if ( currentSlide > 0 ) {   
 
-        nextImage.classList.remove('hidden');
+            currentSlide -= 1;
 
-        if (currentSlide == 0) {          
-            previousImage.classList.add('hidden');
+            nextImage.classList.remove('hidden');
         }
+
+        else {
+
+            currentSlide = images.length - 1; //ad ogni click incemento l'indice di 1 per cambiare immagine
+        }
+
+        allSlides[currentSlide].classList.add('current');  //aagiungo la classe "current" alla nuova slide        
     }
     
 );
