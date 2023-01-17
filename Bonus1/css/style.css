@@ -1,0 +1,151 @@
+/* REGOLE DI RESET  */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* REGOLE GENERALI */
+.flex {
+    display: flex;
+}
+
+.container1000 {
+    max-width: 1000px;
+    margin:0 auto;
+}
+
+.container1100 {
+    max-width: 1100px;
+    margin:0 auto;
+}
+
+.container1200 {
+    max-width: 1200px;
+    margin:0 auto;
+}
+
+
+.inline-block {
+    display: inline-block;
+}
+
+.mt10 {
+    margin-top: 10px;
+}
+
+.mt20 {
+    margin-top: 20px;
+}
+
+.mt30 {
+    margin-top: 30px;
+}
+
+.mb10 {
+    margin-bottom: 10px;
+}
+
+.mb20 {
+    margin-bottom: 20px;
+}
+
+.mb30 {
+    margin-bottom: 30px;
+}
+
+
+/* Regole main */
+main {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel {
+    width: 50%;
+    height: 50%;
+    position: relative;
+}
+
+.thumbnails {
+    width: 10%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    position: relative;
+}
+
+.thumbnails .thumb {
+    width: 100%;
+    height: calc(100% / 5);
+    opacity: 0.5;
+}
+
+.thumbnails .previous,
+.thumbnails .next {
+    position: absolute;
+    left: 40%;
+    height: 30px;
+    width: 30px;
+    background-color: rgba( 255, 255, 255, 0.7);
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: center;
+    border-radius: 50%;
+    line-height: 30px;
+    transform: rotate(90deg);
+    z-index: 2;
+}
+
+.thumbnails .previous {
+    top: 10px;
+    
+}
+
+.thumbnails .next {
+    bottom: 10px;
+}
+
+.thumbnails .previous:hover,
+.thumbnails .next:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.carousel .slide {
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.carousel .slide img,
+.thumbnails .thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel .current {
+    display: block;
+}
+
+.thumbnails .thumb.current-thumb {
+    opacity: 1;
+    border: 2px solid white;
+}
+
+.hidden {
+    display: none;
+}
+
+.img-info {
+    position: absolute;
+    left: 40px;
+    top: calc(100% - 80px);
+    color: white;
+}
+
