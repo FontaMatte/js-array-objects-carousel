@@ -25,3 +25,68 @@ const images = [
         text: 'Marvel\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.',
     }
 ];
+
+const carousel = document.querySelector('.carousel');
+const previousImage = document.querySelector('.previous');
+const nextImage = document.querySelector('.next');
+
+
+for (let i = 0; i < images.length; i++) {
+
+    const slide = document.createElement('div');
+    slide.classList.add('slide');
+    slide.innerHTML = `<img src="${images[i].image}">
+                        <div class="img-info">
+                            <h2>
+                            ${images[i].title}
+                            </h2>
+                            <p>
+                            ${images[i].text}
+                            </p>
+                        </div>`;
+    carousel.append(slide);
+
+}
+
+const allSlides = document.querySelectorAll('.slide');
+
+let currentSlide = 0;
+allSlides[currentSlide].classList.add('current');
+
+// al click passo all'immagine sucessiva
+nextImage.addEventListener('click',
+    function() {
+        console.log('cliccato next');
+
+        allSlides[currentSlide].classList.remove('current'); //rimuovo classe "current" alla vecchia slide
+        currentSlide += 1; //ad ogni click incemento l'indice di 1 per cambiare immagine
+
+        allSlides[currentSlide].classList.add('current');  //aagiungo la classe "current" alla nuova slide
+
+        previousImage.classList.remove('hidden');    //rimuovo la classe hidden per rendere visibile la freecia previous
+
+        if (currentSlide == allSlides.length - 1) { 
+        nextImage.classList.add('hidden');  //nascondo la freccia next quando arrivo all'ultima immagine
+        }
+    }
+    
+);
+
+// al click passo all'immagine precedente
+previousImage.addEventListener('click',
+    function() {
+        console.log('cliccato previous');
+
+        allSlides[currentSlide].classList.remove('current');
+        currentSlide -= 1;
+
+        allSlides[currentSlide].classList.add('current');
+
+        nextImage.classList.remove('hidden');
+
+        if (currentSlide == 0) {          
+            previousImage.classList.add('hidden');
+        }
+    }
+    
+);
