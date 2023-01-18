@@ -28,21 +28,20 @@ const images = [
 
 const carousel = document.querySelector('.carousel');
 const thumbnails = document.querySelector('.thumbnails');
-const previousImage = document.querySelector('.previous');
-const nextImage = document.querySelector('.next');
 
 
-for (let i = 0; i < images.length; i++) {
+for (let i = 0; i < images.length; i++) { //OPPURE images.forEach((Singleimage) => {});
 
+    // creazione Slide
     const slide = document.createElement('div');
     slide.classList.add('slide');
-    slide.innerHTML = `<img src="${images[i].image}">
+    slide.innerHTML = `<img src="${images[i].image/*forEach -> singleImage.image*/}">
                         <div class="img-info">
                             <h2>
-                            ${images[i].title}
+                            ${images[i].title/*forEach -> singleImage.title*/}
                             </h2>
                             <p>
-                            ${images[i].text}
+                            ${images[i].text/*forEach -> singleImage.text*/}
                             </p>
                         </div>`;
     carousel.append(slide);
@@ -50,10 +49,12 @@ for (let i = 0; i < images.length; i++) {
     // creazione thumbnails
     const thumb = document.createElement('div');
     thumb.classList.add('thumb');
+    // thumb.style.height = (100 / images.length + '%'); setting dinamico height delle thumb in base al n di elementi
     thumb.innerHTML = `<img src="${images[i].image}">`;
     thumbnails.append(thumb);
 
 }
+
 
 const allSlides = document.querySelectorAll('.slide');
 const allThumbnails = document.querySelectorAll('.thumb');
@@ -61,6 +62,9 @@ const allThumbnails = document.querySelectorAll('.thumb');
 let currentSlide = 0;
 allSlides[currentSlide].classList.add('current');
 allThumbnails[currentSlide].classList.add('current-thumb');
+
+const previousImage = document.querySelector('.previous');
+const nextImage = document.querySelector('.next');
 
 // al click passo all'immagine sucessiva
 nextImage.addEventListener('click',
@@ -73,8 +77,6 @@ nextImage.addEventListener('click',
         if ( currentSlide < (images.length - 1)) {
 
             currentSlide += 1; //ad ogni click incemento l'indice di 1 per cambiare immagine
-
-            previousImage.classList.remove('hidden');    //rimuovo la classe hidden per rendere visibile la freecia previous  
 
         } 
 
@@ -102,12 +104,11 @@ previousImage.addEventListener('click',
 
             currentSlide -= 1;
 
-            nextImage.classList.remove('hidden');
         }
 
         else {
 
-            currentSlide = images.length - 1; //ad ogni click incemento l'indice di 1 per cambiare immagine
+            currentSlide = images.length - 1;
         }
 
         allSlides[currentSlide].classList.add('current');  //aagiungo la classe "current" alla nuova slide    
